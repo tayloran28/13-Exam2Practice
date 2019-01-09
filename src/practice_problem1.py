@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Alyssa Taylor.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -40,10 +40,10 @@ def main():
     # UN-comment tests as you work the problems.
     ###########################################################################
 
-    # run_test_init()
-    # run_test_append_string()
-    # run_test_double()
-    # run_test_shrink()
+    run_test_init()
+    run_test_append_string()
+    run_test_double()
+    run_test_shrink()
     # run_test_double_then_shrink()
     # run_test_reset()
     # run_test_steal()
@@ -94,8 +94,14 @@ class Box(object):
           :type contents: str
           :type volume: int
         """
+
+        self.volume = volume
+        self.contents = contents
+        if len(contents) > volume:
+            self.contents = ''
+
         # ---------------------------------------------------------------------
-        # TODO: 2. Implement and test this function.
+        # DONE: 2. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -135,8 +141,23 @@ class Box(object):
         Type hints:
           :type additional_contents: str
         """
+
+        s = ''
+        j = ''
+        self.contents = self.contents + additional_contents
+        if len(self.contents) <= self.volume:
+            return ''
+        if len(self.contents) > self.volume:
+            for k in range(len(self.contents)):
+                if (k+1) < self.volume + 1:
+                    s = s + self.contents[k]
+                else:
+                    j = j + self.contents[k]
+            self.contents = s
+            return j
+
         # ---------------------------------------------------------------------
-        # TODO: 3. Implement and test this function.
+        # DONE: 3. Implement and test this function.
         #     See the testing code (below) for more examples.
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -192,8 +213,11 @@ class Box(object):
           #   s is 'Robot Fun'   [this is the part of the doubled
           #                       contents that did NOT fit]
         """
+
+        return self.append_string(self.contents)
+
         # ---------------------------------------------------------------------
-        # TODO: 4. Implement and test this function.
+        # DONE: 4. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -241,6 +265,10 @@ class Box(object):
         Type hints:
           :type new_volume: int
         """
+
+        self.volume = new_volume
+        return self.append_string(self.contents)
+
         # ---------------------------------------------------------------------
         # TODO: 5. Implement and test this function.
         #     The testing code is already written for you (above).
@@ -297,6 +325,11 @@ class Box(object):
         Type hints:
           :type new_volume: int
         """
+
+        self.volume = new_volume
+        self.double()
+        self.shrink(self.volume)
+
         # ---------------------------------------------------------------------
         # TODO: 6. Implement and test this function.
         #     The testing code is already written for you (above).
