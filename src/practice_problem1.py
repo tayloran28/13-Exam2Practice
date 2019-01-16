@@ -97,6 +97,7 @@ class Box(object):
 
         self.volume = volume
         self.contents = contents
+
         if len(contents) > volume:
             self.contents = ''
 
@@ -326,10 +327,10 @@ class Box(object):
           :type new_volume: int
         """
 
-        return len(self.double() + self.shrink())
+        return len(self.double() + self.shrink(new_volume))
 
         # ---------------------------------------------------------------------
-        # TODO: 6. Implement and test this function.
+        # DONE: 6. Implement and test this function.
         #     The testing code is already written for you (above).
         # ---------------------------------------------------------------------
         # ---------------------------------------------------------------------
@@ -348,8 +349,7 @@ class Box(object):
           when this Box was constructed.
         """
 
-        self.volume = volume
-        self.contents = contents
+
 
         # ---------------------------------------------------------------------
         # TODO: 7. Implement and test this function.

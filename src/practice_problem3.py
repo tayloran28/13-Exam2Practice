@@ -350,14 +350,13 @@ def practice_problem3b(sequence):
     """
 
     end = sequence[len(sequence)-1]
-    for k in range(len(sequence)):
-        if sequence[k] == end:
+    for k in range(len(sequence)-1):
+        if end == sequence[k]:
             return True
-        else:
-            return False
+    return False
 
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # IMPLEMENTATION REQUIREMENT:  You are NOT allowed to use the
@@ -485,13 +484,14 @@ def practice_problem3c(sequence):
       :type: sequence: list    or tuple or string
     """
 
+    s = []
     for k in range(len(sequence)):
         if sequence[k] == 0:
-            return [k]
-    return []
+            s = s + [k]
+    return s
 
     ###########################################################################
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
